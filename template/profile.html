@@ -1,0 +1,53 @@
+<html>
+
+<head>
+    <!-- CSS do bootstrap -->
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    
+</head>
+
+<!-- JS do feather icons, para utilizar icones como <i>-->
+<script src="https://unpkg.com/feather-icons"></script>
+
+<body onload="carregaUser()">
+    <div class="container">
+        <div class="row">
+            <div class="col-10">
+                <h3 class="text-center">Self Desk</h3>
+            </div>
+            <div class="col-2">
+                <i data-feather="log-out" onclick="logout()"></i>
+            </div>
+        </div>
+        <div class="row">
+            <div id="fotoUser" class="col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
+            </div>
+            <div id="perfil" class="col-xs-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
+            </div>
+
+        </div>
+        <div class="row">
+            <h3>Meus Pedidos</h3>
+            <hr>
+        </div>
+        <div class="col-3">
+            <button type="button" class="btn btn-info" onclick="novoPedido()">Novo Pedido</button>
+        </div>
+
+
+        <div class='col-12'>
+            <div id="pedidos">
+            </div>
+        </div>
+
+    </div>
+
+    <!--Import do Jquery-->
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
+
+    <!--Import do JS da pagina-->
+    <script type="text/javascript" src="./js/profile.js"></script>
+
+</body>
+
+</html>

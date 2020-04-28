@@ -1,0 +1,62 @@
+<html lang="pt-br">
+
+<head>
+  <link rel="icon" href="https://www.itau.com.br/content/dam/itau/varejo/logo-itau-varejo-desktop.png">
+
+  <title>Login Self-desk</title>
+
+  <link href="./css/bootstrap.min.css" rel="stylesheet">
+  <link href="./css/signin.css" rel="stylesheet">
+</head>
+
+<body class="text-center">
+
+  <form class="form-signin">
+    <!--Alert caso a senha estiver errada-->
+    <div class="row">
+      <div class="col-12">
+        <div class="alert alert-danger" role="alert" data-auto-dismiss="2000" id="failLogin">
+          Login Invalido
+        </div>
+      </div>
+    </div>
+
+    <!--Logo do Itau-->
+    <img class="mb-4" src="https://www.itau.com.br/content/dam/itau/varejo/logo-itau-varejo-desktop.png" alt=""
+      width="72" height="72">
+    <h1 class="h3 mb-3 font-weight-normal">IU Self-Desk</h1>
+
+    <!--Inputs de Racf-->
+    <div class="row">
+      <div class="input-group mb-4">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="basic-addon1">RACF</span>
+        </div>
+        <input type="text" id="txtLogin" class="form-control" placeholder="Digite o RACF" aria-label="Username"
+          aria-describedby="basic-addon1">
+      </div>
+    </div>
+    <!--Inputs de Senha-->
+    <div class="row">
+      <div class="input-group mb-4">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="basic-addon1">Senha</span>
+        </div>
+        <input type="password" id="txtSenha" class="form-control m-0" placeholder="Digite a Senha" aria-label="Password"
+          aria-describedby="basic-addon1">
+      </div>
+    </div>
+
+    <!--Botao para enviar o usuario e senha para o back-->
+    <button type="button" class="btn btn-dark" onclick="autentica()">Conectar-se</button>
+
+  </form>
+
+  <!--Import do Jquery-->
+  <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
+
+  <!--Import do JS da pagina-->
+  <script type="text/javascript" src="./js/login.js"></script>
+</body>
+
+</html>

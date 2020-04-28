@@ -1,0 +1,5 @@
+package br.com.itau.selfdesk.model;
+
+public class Maquina {
+
+}

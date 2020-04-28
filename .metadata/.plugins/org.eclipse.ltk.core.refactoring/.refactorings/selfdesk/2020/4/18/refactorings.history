@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename field &apos;dao&apos; in &apos;br.com.itau.selfdesk.controller.PedidoController&apos; to &apos;daoPedido&apos;&#x0D;&#x0A;- Original project: &apos;selfdesk&apos;&#x0D;&#x0A;- Original element: &apos;br.com.itau.selfdesk.controller.PedidoController.dao&apos;&#x0D;&#x0A;- Renamed element: &apos;br.com.itau.selfdesk.controller.PedidoController.daoPedido&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" delegate="false" deprecate="false" description="Rename field &apos;dao&apos;" flags="589826" getter="false" id="org.eclipse.jdt.ui.rename.field" input="/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;br.com.itau.selfdesk.controller{PedidoController.java[PedidoController^dao" name="daoPedido" references="true" setter="false" stamp="1588019789182" textual="false" version="1.0"/>
+</session>

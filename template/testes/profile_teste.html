@@ -1,0 +1,60 @@
+<html>
+
+<head>
+    <!-- CSS do bootstrap -->
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link href="navbar.css" rel="stylesheet">
+</head>
+
+<!-- JS do feather icons, para utilizar icones como <i>-->
+<script src="https://unpkg.com/feather-icons"></script>
+
+<body onload="carregaUser()">
+    <div class="container">
+        <div class="row">
+            <div class="col-1">
+                <img class="mb-4" src="https://www.itau.com.br/content/dam/itau/varejo/logo-itau-varejo-desktop.png" alt=""
+      width="40" height="40">
+            </div>
+            <div class="col-10 mt-2 pl-3">
+                <div class="back">
+                    <nav>                        
+                        <a href="#">Perfil</a>
+                        <a href="#"></a>
+                        <a href="../novopedido.html">Novo Pedido</a>
+                    </nav>
+                </div>
+            </div>
+            <div class="col-1 mt-2">
+                <a href="#"><i data-feather="log-out" onclick="logout()"></i></a>
+            </div>
+        </div>
+        <br>
+           
+        <div class="row">
+            <div id="fotoUser" class="col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
+            </div>
+            <div id="perfil" class="col-xs-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
+            </div>
+
+        </div>
+        <div class="row">
+            <h3>Meus Pedidos</h3>
+            <hr>
+        </div>
+        <div class='col-12'>
+            <div id="pedidos">
+            </div>
+        </div>
+
+    </div>
+
+    <!--Import do Jquery-->
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
+
+    <!--Import do JS da pagina-->
+    <script type="text/javascript" src="../js/profile.js"></script>
+
+</body>
+
+</html>
