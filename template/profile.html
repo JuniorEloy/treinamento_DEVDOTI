@@ -4,6 +4,7 @@
     <!-- CSS do bootstrap -->
     <link rel="stylesheet" href="./css/bootstrap.min.css">
     <link rel="stylesheet" href="./css/navbar.css">
+   
 </head>
 
 <!-- JS do feather icons, para utilizar icones como <i>-->
@@ -11,14 +12,15 @@
 
 <body onload="carregaUser()">
     <div class="container">
-        <div class="row">
-            <div class="col-1">
-                <img class="mb-4" src="https://www.itau.com.br/content/dam/itau/varejo/logo-itau-varejo-desktop.png" alt=""
-      width="40" height="40">
+        <!--Navbar on top-->
+        <div class="row pt-1">
+            <div class="col-1 ">
+                <img class="mb-4" src="https://www.itau.com.br/content/dam/itau/varejo/logo-itau-varejo-desktop.png"
+                    alt="" width="40" height="40">
             </div>
             <div class="col-10 mt-2 pl-3">
                 <div class="back">
-                    <nav>                        
+                    <nav>
                         <a href="#">Perfil</a>
                         <a href="#"></a>
                         <a href="./novopedido.html">Novo Pedido</a>
@@ -29,8 +31,9 @@
                 <a href="#"><i data-feather="log-out" onclick="logout()"></i></a>
             </div>
         </div>
-        <br>
-           
+        <hr class="mt-0">
+        
+
         <div class="row">
             <div id="fotoUser" class="col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
             </div>

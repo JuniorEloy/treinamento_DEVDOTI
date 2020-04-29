@@ -1,16 +1,72 @@
 <html>
-    <head>
 
-        <script type="text/javascript" src="./js/novopedido.js"></script>
-    </head>
+<head>
+    <!-- CSS do bootstrap -->
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/navbar.css">
+    <link rel="stylesheet" href="./css/novopedido.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+</head>
 
-    <body onload="carregaSoftware()">
-        <h3> Novo pedido </h3>
+<!-- JS do feather icons, para utilizar icones como <i>-->
+<script src="https://unpkg.com/feather-icons"></script>
 
-        <div id="listaSoftware">
+<body onload="carregaSoftware()">
+    <div class="container">
+        <!--Navbar on top-->
+        <div class="row pt-1">
+            <div class="col-1 ">
+                <img class="mb-4" src="https://www.itau.com.br/content/dam/itau/varejo/logo-itau-varejo-desktop.png"
+                    alt="" width="40" height="40">
+            </div>
+            <div class="col-10 mt-2 pl-3">
+                <div class="back">
+                    <nav>
+                        <a href="./profile.html">Perfil</a>
+                        <a href="#"></a>
+                        <a href="#">Novo Pedido</a>
+                    </nav>
+                </div>
+            </div>
+            <div class="col-1 mt-2">
+                <a href="#"><i data-feather="log-out" onclick="logout()"></i></a>
+            </div>
+        </div>
+        <hr class="mt-0">
+
+        <h3> Selecione seus softwares: </h3>
+        <div class="ml-3 mt-3">
+            <div id="listaSoftware"></div>
+        </div>
+
+        <div class="row mt-2">
+            <div class="col-12">
+                Observação do pedido:<br>
+                <input type="text" id="obs_pedido" />
+            </div>
 
         </div>
 
-    </body>
+
+        <div class="d-flex align-items-end flex-column">
+            <div class="p-2">
+                <button type="button" class="btn btn-success" onclick="gera_lista_softwares_escolhidos()">Finalizar</button>
+            </div>
+          </div>
+       
+        
+
+    </div>
+
+    
+
+    <!--Import do Jquery-->
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
+
+    <!--JS da pagina-->
+    <script type="text/javascript" src="./js/novopedido.js"></script>
+
+
+</body>
 
 </html>
