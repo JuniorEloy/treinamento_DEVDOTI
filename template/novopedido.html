@@ -1,6 +1,7 @@
 <html>
 
 <head>
+    <link rel="icon" href="https://www.itau.com.br/content/dam/itau/varejo/logo-itau-varejo-desktop.png">
     <!-- CSS do bootstrap -->
     <link rel="stylesheet" href="./css/bootstrap.min.css">
     <link rel="stylesheet" href="./css/navbar.css">
@@ -34,6 +35,16 @@
         </div>
         <hr class="mt-0">
 
+        <h3>Selecione sua maquina </h3>
+        <div class="ml-3 mt-3">
+            <div id="listaMaquina"></div>
+        </div>
+
+      
+    
+            
+        
+
         <h3> Selecione seus softwares: </h3>
         <div class="ml-3 mt-3">
             <div id="listaSoftware"></div>
@@ -44,21 +55,21 @@
                 Observação do pedido:<br>
                 <input type="text" id="obs_pedido" />
             </div>
-
         </div>
 
 
         <div class="d-flex align-items-end flex-column">
             <div class="p-2">
-                <button type="button" class="btn btn-success" onclick="gera_lista_softwares_escolhidos()">Finalizar</button>
+                <button type="button" class="btn btn-success"
+                    onclick="gera_lista_softwares_escolhidos()">Finalizar</button>
             </div>
-          </div>
-       
-        
+        </div>
+
+
 
     </div>
 
-    
+
 
     <!--Import do Jquery-->
     <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
