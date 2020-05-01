@@ -1,22 +1,17 @@
-var fragmento_checkbox = ' <div class="row">' +
-                        '<label class="label">' +
-                        '<input  class="label__checkbox" value="{{SOFTWARE}}" name="software" type="checkbox" />' +
-                        '<span class="label__text">' +
-                        '<span class="label__check">' +
-                        '<i class="fa fa-check icon"></i>' +
-                        '</span>' +
-                        '</span>' +
-                        '</label>' +
-                        '{{LABEL}}' +
-                        '</div>';
-
-var fragmento_radio =   '<div class="form-check">'+
-                        '<input class="form-check-input" type="radio" name="exampleRadios" id="{{ID}}" value="option1">'+
-                        '<label class="form-check-label" for="exampleRadios1">'+
+var fragmento_checkbox =//'<label class="container"> ' +
+                        '<input type="checkbox" value="{{SOFTWARE}}" class="option-input checkbox" name="software" />'+
                         '{{LABEL}}'+
                         '</label>'+
-                        '</div>';
-                
+                        '&emsp;&emsp;';
+                        
+var fragmento_radio =   '<label>'+
+                        '<input  type="radio" class="option-input radio" name="exampleRadios" id="{{ID}}" value="option1">'+                        
+                        '{{LABEL}}'+
+                        '</label>'+
+                        '&emsp;&emsp;';
+
+                        
+ 
 
 function carregaSoftware() {
     var user = localStorage.getItem("user");
@@ -27,7 +22,7 @@ function carregaSoftware() {
         fetch("http://localhost:8080/software/disponiveis")
             .then(res => res.json())
             .then(res => popula(res));
-        fetch("http://localhost:8080/maquinas")
+        fetch("http://localhost:8080/maquinas/disponiveis")
             .then(res => res.json())
             .then(res => popula_maquina(res));
     }
@@ -56,17 +51,45 @@ function popula(lista) {
 function gera_lista_softwares_escolhidos(){
     const checkboxes = document.querySelectorAll('input[name="software"]:checked');
     const radio = document.querySelectorAll('input[name="exampleRadios"]:checked');
-    id_maquina = radio[0].id
+    id_maquina = parseInt(radio[0].id);
 
     let softwares_list = [];
     checkboxes.forEach((checkbox) => {
-        softwares_list.push(checkbox.value);
+        softwares_list.push(parseInt(checkbox.value));
     });
 
     Json_pedido = gera_JSON_pedido(softwares_list, $("#obs_pedido").val(), id_maquina);
 
-    //console.log(Json_pedido);
+
+   // tambem preciso montar um cabecalho para indicar o metodo, o corpo e os headers
+   var cabecalho = {
+       method: 'POST',
+       body: JSON.stringify(Json_pedido),
+       headers: {
+               'Content-Type': 'application/json'
+       }
+   }
+
+   fetch("http://localhost:8080/pedido/novo",cabecalho)
+        .then(   
+            Swal.fire(
+                'Sucesso.',
+                'Seu pedido foi solicitado!',
+                'success'
+            ).then(function() {
+                window.location = "profile.html";
+            })
+        )
+        .catch(err=>{          // se deu erro (usuario invalido), uso CSS para mostrar a mensagem de erro
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Alguma coisa deu errado!',                
+              })
+        });
 }
+
+
 
 function gera_JSON_pedido(lista_softwares, observacao, id_maquina){
 var data = new Date();
@@ -82,6 +105,7 @@ var usuario = JSON.parse(window.localStorage.getItem('user'));
         "observacao": observacao,
         "dataPedido": str_data,
         "solicitante": { "id" : usuario.id},
+        "computador" : { "id" : id_maquina},
         "itens":[]
     }
 

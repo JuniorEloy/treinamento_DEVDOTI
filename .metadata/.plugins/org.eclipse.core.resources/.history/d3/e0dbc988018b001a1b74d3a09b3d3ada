@@ -1,0 +1,82 @@
+package br.com.itau.selfdesk.controller;
+
+import java.util.ArrayList;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import br.com.itau.selfdesk.dao.MaquinaDAO;
+import br.com.itau.selfdesk.dao.PedidoDAO;
+import br.com.itau.selfdesk.dao.SoftwareDAO;
+import br.com.itau.selfdesk.model.Item;
+import br.com.itau.selfdesk.model.Maquina;
+import br.com.itau.selfdesk.model.Pedido;
+import br.com.itau.selfdesk.model.Software;
+
+@CrossOrigin("*")
+@RestController
+public class PedidoController {
+
+	@Autowired
+	private PedidoDAO daoPedido;
+	
+	@Autowired 
+	private SoftwareDAO daoSoftware;
+	
+	@Autowired
+	private MaquinaDAO daoMaquina;
+		
+	@PostMapping("/pedido/novo")
+	public ResponseEntity<Pedido> adicionarPedido(@RequestBody Pedido novo){
+		try {
+			for (Item i:novo.getItens()) {
+				i.setPedido(novo);
+			}
+			daoPedido.save(novo);
+			
+			for (Item i:novo.getItens()) {
+				Software s = i.getItemSoftware();
+								
+				s = daoSoftware.findById(s.getId()).get();
+				s.setQntLicenca(s.getQntLicenca()-1);			
+				 
+				daoSoftware.save(s);				
+			}			
+			
+			Maquina m = novo.getComputador();
+			m = daoMaquina.findById(m.getId()).get();
+			m.setEstoque(m.getEstoque()-1);
+			
+			daoMaquina.save(m)
+			
+			return ResponseEntity.ok(novo);
+		}
+		catch(Exception e) {
+			return ResponseEntity.status(400).build();
+		}
+	}
+	
+	@GetMapping("/pedidos")
+	public ResponseEntity<ArrayList<Pedido>> getAllPedidos(){
+		ArrayList<Pedido> pedidos = (ArrayList<Pedido>)daoPedido.findAll();
+		
+		return ResponseEntity.ok(pedidos);		
+	}
+	
+	@GetMapping("pedido/{id}")
+	public ResponseEntity<Pedido> getPedidoById(@PathVariable int id){
+		 Pedido item = daoPedido.findById(id).orElse(null);
+		 
+		 if (item == null) {
+			 return ResponseEntity.notFound().build();
+		 }else {
+			 return ResponseEntity.ok(item);
+		 }		
+	}	
+}

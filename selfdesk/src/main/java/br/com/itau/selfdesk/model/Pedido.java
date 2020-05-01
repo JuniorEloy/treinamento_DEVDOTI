@@ -11,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -46,6 +47,17 @@ public class Pedido {
 	@JsonIgnoreProperties("pedido")
 	private List<Item> itens;
 	
+	@OneToOne (cascade = CascadeType.MERGE)	
+	private Maquina computador;
+	
+	public Maquina getComputador() {
+		return computador;
+	}
+
+	public void setComputador(Maquina computador) {
+		this.computador = computador;
+	}
+
 	public int getNumPedido() {
 		return numPedido;
 	}

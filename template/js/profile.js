@@ -10,7 +10,7 @@ var fragmentoPerfil =   '<h3> {{NOME}} </h3>'+
 var fragmentoFoto = '<img src="{{LINKFOTO}}" width="100%">';
 
 //template para adicionar os pedidos, em loop
-var fragmentoPedido = "{{DATAPEDIDO}} - {{OBSERVACAO}} : {{STATUS}} <BR>";
+var fragmentoPedido = "<a href='detalhepedido.html?num={{NUMPEDIDO}}'> {{DATAPEDIDO}} - {{OBSERVACAO}} : {{STATUS}} <BR> </a>";
 
 //ao iniciar a pagina, roda a funcao para gerar os itens
 function carregaUser(){
@@ -35,6 +35,7 @@ function carregaUser(){
             strPedidos += pedidoatual.replace("{{DATAPEDIDO}}", user.pedidos[i].dataPedido)
                                      .replace("{{OBSERVACAO}}", user.pedidos[i].observacao)
                                      .replace("{{STATUS}}", user.pedidos[i].status)
+                                     .replace("{{NUMPEDIDO}}", user.pedidos[i].numPedido);
         }
 
         document.getElementById("pedidos").innerHTML = strPedidos;

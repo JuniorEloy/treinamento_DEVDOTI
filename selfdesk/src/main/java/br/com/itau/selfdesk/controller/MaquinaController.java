@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.itau.selfdesk.dao.MaquinaDAO;
 import br.com.itau.selfdesk.model.Maquina;
+import br.com.itau.selfdesk.model.Software;
 
 
 @CrossOrigin("*")
@@ -27,6 +28,13 @@ public class MaquinaController {
 		return ResponseEntity.ok(items);
 	}
 	
+	@GetMapping("/maquinas/disponiveis")
+	public ResponseEntity<ArrayList<Maquina>> getDisponiveis(){
+		ArrayList<Maquina> disp = (ArrayList<Maquina>)dao.findByEstoqueGreaterThan(0);
+		
+		return ResponseEntity.ok(disp);
+	}
+		
 	@GetMapping("/maquina/{id}")
 	public ResponseEntity<Maquina> getMaquinaByID(@PathVariable int id){
 		Maquina item = dao.findById(id).orElse(null);

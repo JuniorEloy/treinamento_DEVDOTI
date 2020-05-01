@@ -33,6 +33,19 @@ public class Maquina {
 	
 	@Column(name="num_serie", length = 50)
 	private String numSerie;
+	
+	@Column(name="qnt_disponivel")
+	private int estoque;
+
+	
+
+	public int getEstoque() {
+		return estoque;
+	}
+
+	public void setEstoque(int estoque) {
+		this.estoque = estoque;
+	}
 
 	public int getId() {
 		return id;

@@ -11,9 +11,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.itau.selfdesk.dao.MaquinaDAO;
 import br.com.itau.selfdesk.dao.PedidoDAO;
 import br.com.itau.selfdesk.dao.SoftwareDAO;
 import br.com.itau.selfdesk.model.Item;
+import br.com.itau.selfdesk.model.Maquina;
 import br.com.itau.selfdesk.model.Pedido;
 import br.com.itau.selfdesk.model.Software;
 
@@ -26,6 +28,9 @@ public class PedidoController {
 	
 	@Autowired 
 	private SoftwareDAO daoSoftware;
+	
+	@Autowired
+	private MaquinaDAO daoMaquina;
 		
 	@PostMapping("/pedido/novo")
 	public ResponseEntity<Pedido> adicionarPedido(@RequestBody Pedido novo){
@@ -39,9 +44,16 @@ public class PedidoController {
 				Software s = i.getItemSoftware();
 								
 				s = daoSoftware.findById(s.getId()).get();
-				s.setQntLicenca(s.getQntLicenca()-1);
+				s.setQntLicenca(s.getQntLicenca()-1);			
+				 
 				daoSoftware.save(s);				
 			}			
+			
+			Maquina m = novo.getComputador();
+			m = daoMaquina.findById(m.getId()).get();
+			m.setEstoque(m.getEstoque()-1);
+			
+			daoMaquina.save(m);
 			
 			return ResponseEntity.ok(novo);
 		}
