@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="https://unpkg.com/@coreui/coreui@3.0.0-rc.0/dist/css/coreui.min.css">
 </head>
 
-<body onload="carregaUser();">
+<body >
 
 
   <div class="bar bar-header bar-danger">
@@ -23,12 +23,12 @@
 
     </div>
 
-    <ion-content has-header="true">
-      <div id="profile-bg">
+    <ion-content scroll="true" >
+      <div id="profile-bg"  >
 
-        <div id="content">
+        <div id="content" >
 
-          <div id="profile-info">
+          <div id="profile-info" >
             <div id="fotoUser">
 
               <img class="profileimage" src="{{LINKFOTO}}">
@@ -52,9 +52,9 @@
 
               </div>
 
-
     </ion-content>
 
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
     <script src="https://unpkg.com/@coreui/coreui@3.0.0-rc.0/dist/js/coreui.min.js"></script>
     <script type="text/javascript" src="./js/profile.js"></script>
 </body>

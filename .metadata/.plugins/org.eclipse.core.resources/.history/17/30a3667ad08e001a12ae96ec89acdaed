@@ -6,5 +6,6 @@ import br.com.itau.selfdesk.model.Pedido;
 import br.com.itau.selfdesk.model.Usuario;
 
 public interface PedidoDAO extends CrudRepository<Pedido, Integer>{
+	public Pedido findBySolicitante(int id);
 	
 }

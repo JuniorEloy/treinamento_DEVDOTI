@@ -69,7 +69,6 @@ public class PedidoController {
 		return ResponseEntity.ok(pedidos);		
 	}
 	
-	
 	@GetMapping("pedido/{id}")
 	public ResponseEntity<Pedido> getPedidoById(@PathVariable int id){
 		 Pedido item = daoPedido.findById(id).orElse(null);

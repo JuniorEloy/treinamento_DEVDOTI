@@ -38,9 +38,7 @@ function carregaUser() {
                 }
             
                 document.getElementById("imagemstatus").innerHTML = status;
-
                 
-
             })
             .catch(erro => alert("erro ao recuperar!"));
     }
