@@ -1,7 +1,0 @@
-package br.com.itau.selfdesk.dao;
-
-import org.springframework.data.repository.CrudRepository;
-
-public interface PedidoDAO extends CrudRepository<Pedido, Integer>{
-
-}

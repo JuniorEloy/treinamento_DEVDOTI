@@ -1,67 +1,87 @@
 <html>
 
 <head>
-    <link rel="icon" href="https://www.itau.com.br/content/dam/itau/varejo/logo-itau-varejo-desktop.png">
-    <!-- CSS do bootstrap -->
-    <link rel="stylesheet" href="./css/bootstrap.min.css">
-    <link rel="stylesheet" href="./css/navbar.css">
-    <link rel="stylesheet" href="./css/novopedido.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+
+  <title>Profile</title>
+  <link rel="icon" href="https://www.itau.com.br/content/dam/itau/varejo/logo-itau-varejo-desktop.png">
+
+  
+  <link rel="stylesheet" href="https://code.ionicframework.com/0.9.25/css/ionic.min.css" >  
+  <link rel="stylesheet" href="https://unpkg.com/@coreui/coreui@3.0.0-rc.0/dist/css/coreui.min.css">
+  <link rel="stylesheet" href="./css/header.css">
 </head>
 
-<!-- JS do feather icons, para utilizar icones como <i>-->
-<script src="https://unpkg.com/feather-icons"></script>
 
 <body onload="carregaSoftware()">
-    <div class="container">
-        <!--Navbar on top-->
-        <div class="row pt-1">
-            <div class="col-1 ">
-                <img class="mb-4" src="https://www.itau.com.br/content/dam/itau/varejo/logo-itau-varejo-desktop.png"
-                    alt="" width="40" height="40">
-            </div>
-            <div class="col-10 mt-2 pl-3">
-                <div class="back">
-                    <nav>
-                        <a href="./profile.html">Perfil</a>
-                        <a href="#"></a>
-                        <a href="#">Novo Pedido</a>
-                    </nav>
+    
+    <div class="bar bar-header bar-danger">
+
+        <img src="https://logospng.org/download/itau/logo-itau-4096.png" alt="some text" width=40 height=40>
+    
+        <div class="interna">
+          <a href="profile.html"><button type="button" class="btn btn-ghost-dark">Perfil</button></a>
+          <a href="novopedido.html"><button type="button" class="btn btn-ghost-dark">Novo Pedido</button></a>
+          <button type="button" class="btn btn-ghost-dark" onclick="logout();">Logout</button>
+        </div>
+    
+        <ion-content has-header="true">
+          <div id="profile-bg">
+            <div id="content">sss
+              <div id="profile-info">
+                <div id="fotoUser">              
                 </div>
-            </div>
-            <div class="col-1 mt-2">
-                <a href="#"><i data-feather="log-out" onclick="logout()"></i></a>
-            </div>
-        </div>
-        <hr class="mt-0">
-        <div class="text-center">
-        <h3>Selecione sua maquina </h3>
-        <div class="ml-3 mt-3">
-            <div id="listaMaquina"></div>
-        </div>
-        <br>
-        <h3> Selecione seus softwares: </h3>
-        
-        <div class="ml-3 mt-3">
-            <div id="listaSoftware"></div>
-        </div>
+                <BR><BR><BR><BR>
+                <hr>
+                <!--<h4> Novo Pedido </h4><hr><br>-->
+                <h3>Selecione sua Máquina  </h3>
+                <div class="ml-3 mt-3">
+                    <div id="listaMaquina"></div>
+                </div>
+                <br>
 
-        <div class="row mt-2">
-            <div class="col-12">
-                <h3>Observação do pedido:<br></h3>
-                <input type="text" id="obs_pedido" />
-            </div>
-        </div>
-        </div>
 
-        <div class="d-flex align-items-end flex-column">
-            <div class="p-2">
-                <button type="button" class="btn btn-success"
-                    onclick="gera_lista_softwares_escolhidos()">Finalizar</button>
-            </div>
-        </div>
+                <h3> Selecione seus softwares: </h3>                
+                <div class="ml-3 mt-3">
+                    <div id="listaSoftware"></div>
+                </div>
+                <br>
 
-    </div>
+                <div class="row mt-2">
+                    <div class="col-12">
+                        <h3>Observação do pedido:<br></h3>
+                        
+                        <div class="row justify-content-center">
+                        
+                        <div class="col-4 align-self-center">
+                            <input type="text" id="obs_pedido" class="border border-light" />
+                        </div>
+                        </div>
+                    </div>
+                </div>                
+            
+                <div class="d-flex align-items-end flex-column">
+                    <div class="p-2">
+                        <button type="button" class="btn btn-success"
+                            onclick="gera_lista_softwares_escolhidos()">Finalizar</button>
+                    </div>
+                </div>
+              </div>
+            </div>
+            </div>
+        </ion-content>
+
+
+
+       
+
+
+
+
+
+
+
+
+
     
     <!--Import do SweetAlert-->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>

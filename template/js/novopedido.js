@@ -8,9 +8,7 @@ var fragmento_radio =   '<label>'+
                         '<input  type="radio" class="option-input radio" name="exampleRadios" id="{{ID}}" value="option1">'+                        
                         '{{LABEL}}'+
                         '</label>'+
-                        '&emsp;&emsp;';
-
-                        
+                        '&emsp;&emsp;';                    
  
 
 function carregaSoftware() {
@@ -121,6 +119,3 @@ function logout() {
     localStorage.removeItem("user");                
     window.location = "./login.html"; 
 }
-
-//comando para adicionar os itens como icones do feather
-feather.replace()

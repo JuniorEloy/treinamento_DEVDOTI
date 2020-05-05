@@ -1,59 +1,68 @@
-//template para criar o Perfil
-var fragmentoPerfil =   '<h3> {{NOME}} </h3>'+
-                        '<hr>'+
-                        'RACF: {{RACF}}   <br>'+
-                        'Email: {{EMAIL}}  <br>'+
-                        'Setor: {{SETOR}}'+
-                        '<hr>';
+var fragmentoPerfil = '<h3> {{NOME}} </h3>' + 
+		      '{{SETOR}} <br>' +
+                      '{{EMAIL}} <br>'
+                      
 
-//template para adicionar o link da imagem                        
-var fragmentoFoto = '<img src="{{LINKFOTO}}" width="100%">';
+var fragmentoFoto   = '<img class="profileimage" src="{{LINKFOTO}}">';
 
-//template para adicionar os pedidos, em loop
-var fragmentoPedido = "<a href='detalhepedido.html?num={{NUMPEDIDO}}'> {{DATAPEDIDO}} - {{OBSERVACAO}} : {{STATUS}} <BR> </a>";
+var fragmentoPedido = '<div class="col-12">'+ 
+                         ' [ <a href="detalhepedido.html?num={{NUMPEDIDO}}"> ' +
+			            ' Visualizar Pedido </a> ] [ {{DATAPEDIDO}} ] [ {{OBSERVACOES}} ]'+
+                      '</div>';
 
-//ao iniciar a pagina, roda a funcao para gerar os itens
-function carregaUser(){
-    var userStr = localStorage.getItem("user");
 
-    if(!userStr){
-        window.location = "login.html";
-    }else{
-        var user = JSON.parse(userStr)
-
-        document.getElementById("perfil").innerHTML = fragmentoPerfil.replace("{{NOME}}",user.nome)
-                                                                     .replace("{{RACF}}", user.racf)
-                                                                     .replace("{{EMAIL}}", user.email)
-                                                                     .replace("{{SETOR}}", user.setor);                                                     
-        
-        document.getElementById("fotoUser").innerHTML = fragmentoFoto.replace("{{LINKFOTO}}", user.linkFoto);
-
-        var strPedidos = "";
-        for (i=0; i<user.pedidos.length; i++) {            
-            let pedidoatual = fragmentoPedido;
-
-            strPedidos += pedidoatual.replace("{{DATAPEDIDO}}", user.pedidos[i].dataPedido)
-                                     .replace("{{OBSERVACAO}}", user.pedidos[i].observacao)
-                                     .replace("{{STATUS}}", user.pedidos[i].status)
-                                     .replace("{{NUMPEDIDO}}", user.pedidos[i].numPedido);
-        }
-
-        document.getElementById("pedidos").innerHTML = strPedidos;
-
-    }
-
-}
-
-//comando para remover o cook e redirecionar para login.html
-function logout() {
-    localStorage.removeItem("user");                
-    window.location = "./login.html"; 
-}
-
-//função para redirecionar para novo pedido
 function novoPedido(){
     window.location = "novopedido.html";
 }
 
-//comando para adicionar os itens como icones do feather
-feather.replace()
+// este metodo eh um dos mais trabalhosos, pois ele pega a informacao do usuario
+// e tem que preencher praticamente a pagina toda.
+
+function carregaUser(){
+    var userStr = localStorage.getItem("user");
+    if (!userStr){  // se nao tiver isso no localStorage, redireciona para o index (login)
+        window.location = "login.html";
+    }
+
+    else{
+
+        // se o usuario existe armazenado, eu pego, converto-o para JSON
+
+        var user = JSON.parse(userStr);
+
+        // e comeco a preencher as diferentes secoes da minha pagina
+        
+        // secao da foto
+        
+	document.getElementById("fotoUser").innerHTML = 
+            fragmentoFoto.replace("{{LINKFOTO}}",user.linkFoto);
+
+	// secao do perfil
+
+        var strPerfil = fragmentoPerfil.replace("{{NOME}}",user.nome)
+                                       .replace("{{EMAIL}}",user.email)
+                                       .replace("{{RACF}}",user.racf)
+                                       .replace("{{SETOR}}",user.setor);
+        document.getElementById("perfil").innerHTML = strPerfil;
+
+	
+        // secao dos pedidos
+        var strPedidos="";
+        for (i=0; i<user.pedidos.length; i++){
+            let pedidoatual = fragmentoPedido;
+            strPedidos += pedidoatual.replace("{{DATAPEDIDO}}",user.pedidos[i].dataPedido)
+                                     .replace("{{NUMPEDIDO}}",user.pedidos[i].numPedido)   
+                                     .replace("{{OBSERVACOES}}",user.pedidos[i].observacao);
+        }
+        document.getElementById("pedidos").innerHTML = strPedidos;
+    }
+}
+
+
+
+function logout(){
+    
+	localStorage.removeItem("user");
+    
+	window.location = "login.html"; 
+}

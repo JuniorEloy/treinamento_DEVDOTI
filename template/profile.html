@@ -1,64 +1,62 @@
 <html>
 
 <head>
-    <link rel="icon" href="https://www.itau.com.br/content/dam/itau/varejo/logo-itau-varejo-desktop.png">
-    <!-- CSS do bootstrap -->
-    <link rel="stylesheet" href="./css/bootstrap.min.css">
-    <link rel="stylesheet" href="./css/navbar.css">
-   
+
+  <title>Profile</title>
+  <link rel="icon" href="https://www.itau.com.br/content/dam/itau/varejo/logo-itau-varejo-desktop.png">
+
+  <link rel="stylesheet" href="./css/header.css">
+  <link href="https://code.ionicframework.com/0.9.25/css/ionic.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/@coreui/coreui@3.0.0-rc.0/dist/css/coreui.min.css">
 </head>
 
-<!-- JS do feather icons, para utilizar icones como <i>-->
-<script src="https://unpkg.com/feather-icons"></script>
+<body onload="carregaUser();">
 
-<body onload="carregaUser()">
-    <div class="container">
-        <!--Navbar on top-->
-        <div class="row pt-1">
-            <div class="col-1 ">
-                <img class="mb-4" src="https://www.itau.com.br/content/dam/itau/varejo/logo-itau-varejo-desktop.png"
-                    alt="" width="40" height="40">
-            </div>
-            <div class="col-10 mt-2 pl-3">
-                <div class="back">
-                    <nav>
-                        <a href="#">Perfil</a>
-                        <a href="#"></a>
-                        <a href="./novopedido.html">Novo Pedido</a>
-                    </nav>
-                </div>
-            </div>
-            <div class="col-1 mt-2">
-                <a href="#"><i data-feather="log-out" onclick="logout()"></i></a>
-            </div>
-        </div>
-        <hr class="mt-0">
-        
 
-        <div class="row">
-            <div id="fotoUser" class="col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
-            </div>
-            <div id="perfil" class="col-xs-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
-            </div>
+  <div class="bar bar-header bar-danger">
 
-        </div>
-        <div class="row">
-            <h3>Meus Pedidos</h3>
-            <hr>
-        </div>
-        <div class='col-12'>
-            <div id="pedidos">
-            </div>
-        </div>
+    <img src="https://logospng.org/download/itau/logo-itau-4096.png" alt="some text" width=40 height=40>
+    <div class="interna">
+      <button type="button" class="btn btn-ghost-dark">Perfil</button>
+      <a href="novopedido.html"><button type="button" class="btn btn-ghost-dark">Novo Pedido</button></a>
+      <button type="button" class="btn btn-ghost-dark" onclick="logout();">Logout</button>
 
     </div>
 
-    <!--Import do Jquery-->
-    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
+    <ion-content has-header="true">
+      <div id="profile-bg">
 
-    <!--Import do JS da pagina-->
+        <div id="content">
+
+          <div id="profile-info">
+            <div id="fotoUser">
+
+              <img class="profileimage" src="{{LINKFOTO}}">
+            </div>
+            <BR>
+
+            <div id="perfil">
+              <h3 id="profile-name"> {{NOME}}</h3>
+            </div>
+
+            <hr>
+            <h4>Meus Pedidos</h4>
+            <hr>
+            <div id="pedidos">
+              <div class="row">
+                <h5>
+                  <a href="detalhepedido.html?num={{NUMPEDIDO}}">
+
+              </div>
+              <div id="codigo">
+
+              </div>
+
+
+    </ion-content>
+
+    <script src="https://unpkg.com/@coreui/coreui@3.0.0-rc.0/dist/js/coreui.min.js"></script>
     <script type="text/javascript" src="./js/profile.js"></script>
-
 </body>
 
 </html>

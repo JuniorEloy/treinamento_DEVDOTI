@@ -1,21 +1,49 @@
 <html>
 
 <head>
-    
 
+  <title>Profile</title>
+  <link rel="icon" href="https://www.itau.com.br/content/dam/itau/varejo/logo-itau-varejo-desktop.png">
+
+  <link rel="stylesheet" href="./css/header.css">
+  <link rel="stylesheet" href="https://code.ionicframework.com/0.9.25/css/ionic.min.css" >
+  <link rel="stylesheet" href="https://unpkg.com/@coreui/coreui@3.0.0-rc.0/dist/css/coreui.min.css">
+  
 </head>
 
-<body onload="carregaPedido();">
-    <div class="container">
-        <div class="row">
-            <div id="detalhesPedido">
+<body onload="carregaUser();">
 
-            </div>
-        </div>
+
+  <div class="bar bar-header bar-danger">
+
+    <img src="https://logospng.org/download/itau/logo-itau-4096.png" alt="some text" width=40 height=40>
+
+    <div class="interna">
+      <a href="profile.html"><button type="button" class="btn btn-ghost-dark">Perfil</button></a>
+      <a href="novopedido.html"><button type="button" class="btn btn-ghost-dark">Novo Pedido</button></a>
+      <button type="button" class="btn btn-ghost-dark" onclick="logout();">Logout</button>
     </div>
 
+    <ion-content has-header="true">
+      <div id="profile-bg">
+        <div id="content">
+          <div id="profile-info">
+            <div id="fotoUser">              
+            </div>
+            <BR><BR><BR><BR>
+            <hr>
+            <div id="detalhes">
+            </div>
+            <br>
+            <div id="imagemstatus">
+            </div>
+          </div>
+        </div>
+        </div>
+    </ion-content>
 
-    <script type="text/javascript" src="./js/detalhepedido.js"></script>
+  <script src="https://unpkg.com/@coreui/coreui@3.0.0-rc.0/dist/js/coreui.min.js"></script>
+  <script type="text/javascript" src="./js/detalhepedido.js"></script>
 </body>
 
 </html>
